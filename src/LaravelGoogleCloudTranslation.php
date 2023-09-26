@@ -8,35 +8,36 @@ use NaimKhalifa\LaravelGoogleCloudTranslation\Exceptions\TranslationFailedExcept
 
 class LaravelGoogleCloudTranslation
 {
+    protected TranslateClient $translateClient;
 
-  protected TranslateClient $translateClient;
-
-  public function __construct(TranslateClient $translateClient)
-  {
-    $this->setupTranslateClient($translateClient);
-  }
-
-  protected function setupTranslateClient(TranslateClient $translateClient): void
-  {
-    if (is_null(config('google-cloud-translation.api_key'))) {
-      throw new TranslationFailedException(TranslationFailedExceptionType::ApiKeyNotSet);
+    public function __construct(TranslateClient $translateClient)
+    {
+        $this->setupTranslateClient($translateClient);
     }
 
-    $this->translateClient = new $translateClient(
-      [
-        'key' => config('google-cloud-translation.api_key')
-      ]
-    );
-  }
+    protected function setupTranslateClient(TranslateClient $translateClient): void
+    {
+        if (is_null(config('google-cloud-translation.api_key'))) {
+            throw new TranslationFailedException(TranslationFailedExceptionType::ApiKeyNotSet);
+        }
 
-  public function translate(string $text, string $targetLanguage): string | TranslationFailedException
-  {
-    $translation = $this->translateClient->translate($text, [
-      'target' => $targetLanguage
-    ]);
+        $this->translateClient = new $translateClient(
+            [
+                'key' => config('google-cloud-translation.api_key'),
+            ]
+        );
+    }
 
-    if (!isset($translation['text'])) throw new TranslationFailedException(TranslationFailedExceptionType::TranslationFailed);
+    public function translate(string $text, string $targetLanguage): string|TranslationFailedException
+    {
+        $translation = $this->translateClient->translate($text, [
+            'target' => $targetLanguage,
+        ]);
 
-    return $translation['text'];
-  }
+        if (! isset($translation['text'])) {
+            throw new TranslationFailedException(TranslationFailedExceptionType::TranslationFailed);
+        }
+
+        return $translation['text'];
+    }
 }

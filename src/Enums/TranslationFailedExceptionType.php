@@ -4,6 +4,6 @@ namespace NaimKhalifa\LaravelGoogleCloudTranslation\Enums;
 
 enum TranslationFailedExceptionType
 {
-  case ApiKeyNotSet;
-  case TranslationFailed;
+    case ApiKeyNotSet;
+    case TranslationFailed;
 }
