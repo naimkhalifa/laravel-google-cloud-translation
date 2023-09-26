@@ -1,8 +1,5 @@
-includes:
-    - phpstan-baseline.neon
-
 parameters:
-    level: 4
+    level: 9
     paths:
         - src
         - config
@@ -12,3 +9,9 @@ parameters:
     checkModelProperties: true
     checkMissingIterableValueType: false
 
+#    excludePaths:
+#    ignoreErrors:
+#        - '#PHPDoc tag @var#'
+#
+#
+#    checkMissingIterableValueType: false

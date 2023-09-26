@@ -49,3 +49,5 @@ jobs:
 
       - name: Execute tests
         run: vendor/bin/pest --ci
+        env:
+          GOOGLE_CLOUD_TRANSLATION_API_KEY: ${{ secrets.GOOGLE_CLOUD_TRANSLATION_API_KEY }}
