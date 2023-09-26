@@ -1,12 +1,12 @@
 <?php
 
-namespace VendorName\Skeleton\Commands;
+namespace NaimKhalifa\LaravelGoogleCloudTranslation\Commands;
 
 use Illuminate\Console\Command;
 
-class SkeletonCommand extends Command
+class LaravelGoogleCloudTranslationCommand extends Command
 {
-    public $signature = 'skeleton';
+    public $signature = 'laravel-google-cloud-translation';
 
     public $description = 'My command';
 
