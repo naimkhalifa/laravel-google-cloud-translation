@@ -18,7 +18,7 @@ composer require naimkhalifa/laravel-google-cloud-translation
 You can publish the config file with:
 
 ```bash
-php artisan vendor:publish --tag="laravel-google-cloud-translation-config"
+php artisan vendor:publish --provider="NaimKhalifa\GoogleCloudTranslation\GoogleCloudTranslationServiceProvider"
 ```
 
 This is the contents of the published config file:
