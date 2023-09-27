@@ -1,9 +1,8 @@
 <?php
 
-
+use NaimKhalifa\GoogleCloudTranslation\Exceptions\GoogleCloudTranslationException;
 use NaimKhalifa\GoogleCloudTranslation\GoogleCloudTranslation;
 use NaimKhalifa\GoogleCloudTranslation\TranslateClientProxy;
-use NaimKhalifa\GoogleCloudTranslation\Exceptions\GoogleCloudTranslationException;
 
 // Exceptions
 
@@ -58,7 +57,7 @@ describe('GoogleCloudTranslation', function () {
                 ->with('Hello', [
                     'source' => 'en',
                     'target' => 'fr',
-                    'format' => 'text'
+                    'format' => 'text',
                 ])
                 ->once()
                 ->andReturn([
@@ -85,7 +84,7 @@ describe('GoogleCloudTranslation', function () {
                 ->with('Salut', [
                     'source' => $defaultSource,
                     'target' => $defaultTarget,
-                    'format' => 'text'
+                    'format' => 'text',
                 ])
                 ->once()
                 ->andReturn([
@@ -110,7 +109,7 @@ describe('GoogleCloudTranslation', function () {
                 ], [
                     'source' => 'en',
                     'target' => 'fr',
-                    'format' => 'text'
+                    'format' => 'text',
                 ])
                 ->once()
                 ->andReturn([

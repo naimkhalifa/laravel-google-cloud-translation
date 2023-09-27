@@ -2,7 +2,6 @@
 
 namespace NaimKhalifa\GoogleCloudTranslation;
 
-use Google\Cloud\Translate\V2\TranslateClient;
 use NaimKhalifa\GoogleCloudTranslation\Enums\GoogleCloudTranslationExceptionType;
 use NaimKhalifa\GoogleCloudTranslation\Exceptions\GoogleCloudTranslationException;
 use NaimKhalifa\GoogleCloudTranslation\Traits\SupportedLanguages;
@@ -20,19 +19,19 @@ class GoogleCloudTranslation
 
     protected function validateConfig(): void
     {
-        if (!config('google-cloud-translation.api_key')) {
+        if (! config('google-cloud-translation.api_key')) {
             throw new GoogleCloudTranslationException(GoogleCloudTranslationExceptionType::MissingApiKey);
         }
 
-        if (!config('google-cloud-translation.default_source_language')) {
+        if (! config('google-cloud-translation.default_source_language')) {
             throw new GoogleCloudTranslationException(GoogleCloudTranslationExceptionType::MissingDefaultSourceLanguage);
         }
 
-        if (!config('google-cloud-translation.default_target_language')) {
+        if (! config('google-cloud-translation.default_target_language')) {
             throw new GoogleCloudTranslationException(GoogleCloudTranslationExceptionType::MissingDefaultTargetLanguage);
         }
 
-        if (!in_array(config('google-cloud-translation.default_source_language'), $this->supportedLanguages())) {
+        if (! in_array(config('google-cloud-translation.default_source_language'), $this->supportedLanguages())) {
             throw new GoogleCloudTranslationException(GoogleCloudTranslationExceptionType::InvalidDefaultSourceLanguage);
         }
 
@@ -53,7 +52,7 @@ class GoogleCloudTranslation
 
         $translation = $this->translateClient->translate($text, $hydratedOptions);
 
-        if (!isset($translation['text'])) {
+        if (! isset($translation['text'])) {
             throw new GoogleCloudTranslationException(GoogleCloudTranslationExceptionType::TranslationFailed);
         }
 
@@ -64,7 +63,7 @@ class GoogleCloudTranslation
     {
         $this->validateConfig();
 
-        if (sizeof($input) === 0) {
+        if (count($input) === 0) {
             throw new GoogleCloudTranslationException(GoogleCloudTranslationExceptionType::MissingInput);
         }
 
