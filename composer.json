@@ -35,13 +35,13 @@
     },
     "autoload": {
         "psr-4": {
-            "NaimKhalifa\\LaravelGoogleCloudTranslation\\": "src/",
-            "NaimKhalifa\\LaravelGoogleCloudTranslation\\Database\\Factories\\": "database/factories/"
+            "NaimKhalifa\\GoogleCloudTranslation\\": "src/",
+            "NaimKhalifa\\GoogleCloudTranslation\\Database\\Factories\\": "database/factories/"
         }
     },
     "autoload-dev": {
         "psr-4": {
-            "NaimKhalifa\\LaravelGoogleCloudTranslation\\Tests\\": "tests/",
+            "NaimKhalifa\\GoogleCloudTranslation\\Tests\\": "tests/",
             "Workbench\\App\\": "workbench/app/"
         }
     },
@@ -73,10 +73,10 @@
     "extra": {
         "laravel": {
             "providers": [
-                "NaimKhalifa\\LaravelGoogleCloudTranslation\\LaravelGoogleCloudTranslationServiceProvider"
+                "NaimKhalifa\\GoogleCloudTranslation\\GoogleCloudTranslationServiceProvider"
             ],
             "aliases": {
-                "LaravelGoogleCloudTranslation": "NaimKhalifa\\LaravelGoogleCloudTranslation\\Facades\\LaravelGoogleCloudTranslation"
+                "GoogleCloudTranslation": "NaimKhalifa\\GoogleCloudTranslation\\Facades\\GoogleCloudTranslation"
             }
         }
     },

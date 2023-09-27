@@ -1,9 +1,9 @@
 <?php
 
-namespace NaimKhalifa\LaravelGoogleCloudTranslation\Tests;
+namespace NaimKhalifa\GoogleCloudTranslation\Tests;
 
 use Illuminate\Database\Eloquent\Factories\Factory;
-use NaimKhalifa\LaravelGoogleCloudTranslation\LaravelGoogleCloudTranslationServiceProvider;
+use NaimKhalifa\GoogleCloudTranslation\GoogleCloudTranslationServiceProvider;
 use Orchestra\Testbench\TestCase as Orchestra;
 
 class TestCase extends Orchestra
@@ -13,14 +13,14 @@ class TestCase extends Orchestra
         parent::setUp();
 
         Factory::guessFactoryNamesUsing(
-            fn (string $modelName) => 'NaimKhalifa\\LaravelGoogleCloudTranslation\\Database\\Factories\\'.class_basename($modelName).'Factory'
+            fn (string $modelName) => 'NaimKhalifa\\GoogleCloudTranslation\\Database\\Factories\\' . class_basename($modelName) . 'Factory'
         );
     }
 
     protected function getPackageProviders($app)
     {
         return [
-            LaravelGoogleCloudTranslationServiceProvider::class,
+            GoogleCloudTranslationServiceProvider::class,
         ];
     }
 

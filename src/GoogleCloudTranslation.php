@@ -1,12 +1,12 @@
 <?php
 
-namespace NaimKhalifa\LaravelGoogleCloudTranslation;
+namespace NaimKhalifa\GoogleCloudTranslation;
 
 use Google\Cloud\Translate\V2\TranslateClient;
-use NaimKhalifa\LaravelGoogleCloudTranslation\Enums\TranslationFailedExceptionType;
-use NaimKhalifa\LaravelGoogleCloudTranslation\Exceptions\TranslationFailedException;
+use NaimKhalifa\GoogleCloudTranslation\Enums\TranslationFailedExceptionType;
+use NaimKhalifa\GoogleCloudTranslation\Exceptions\TranslationFailedException;
 
-class LaravelGoogleCloudTranslation
+class GoogleCloudTranslation
 {
     protected TranslateClient $translateClient;
 
@@ -34,7 +34,7 @@ class LaravelGoogleCloudTranslation
             'target' => $targetLanguage,
         ]);
 
-        if (! isset($translation['text'])) {
+        if (!isset($translation['text'])) {
             throw new TranslationFailedException(TranslationFailedExceptionType::TranslationFailed);
         }
 

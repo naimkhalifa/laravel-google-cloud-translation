@@ -1,6 +1,6 @@
 <?php
 
-namespace NaimKhalifa\LaravelGoogleCloudTranslation\Enums;
+namespace NaimKhalifa\GoogleCloudTranslation\Enums;
 
 enum TranslationFailedExceptionType
 {

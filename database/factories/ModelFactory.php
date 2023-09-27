@@ -1,6 +1,6 @@
 <?php
 
-namespace NaimKhalifa\LaravelGoogleCloudTranslation\Database\Factories;
+namespace NaimKhalifa\GoogleCloudTranslation\Database\Factories;
 
 use Illuminate\Database\Eloquent\Factories\Factory;
 

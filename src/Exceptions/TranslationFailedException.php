@@ -1,9 +1,9 @@
 <?php
 
-namespace NaimKhalifa\LaravelGoogleCloudTranslation\Exceptions;
+namespace NaimKhalifa\GoogleCloudTranslation\Exceptions;
 
 use Exception;
-use NaimKhalifa\LaravelGoogleCloudTranslation\Enums\TranslationFailedExceptionType;
+use NaimKhalifa\GoogleCloudTranslation\Enums\TranslationFailedExceptionType;
 
 class TranslationFailedException extends Exception
 {

@@ -1,12 +1,12 @@
 <?php
 
-namespace NaimKhalifa\LaravelGoogleCloudTranslation;
+namespace NaimKhalifa\GoogleCloudTranslation;
 
-use NaimKhalifa\LaravelGoogleCloudTranslation\Commands\LaravelGoogleCloudTranslationCommand;
+use NaimKhalifa\GoogleCloudTranslation\Commands\GoogleCloudTranslationCommand;
 use Spatie\LaravelPackageTools\Package;
 use Spatie\LaravelPackageTools\PackageServiceProvider;
 
-class LaravelGoogleCloudTranslationServiceProvider extends PackageServiceProvider
+class GoogleCloudTranslationServiceProvider extends PackageServiceProvider
 {
     public function configurePackage(Package $package): void
     {
@@ -20,6 +20,6 @@ class LaravelGoogleCloudTranslationServiceProvider extends PackageServiceProvide
             ->hasConfigFile()
             ->hasViews()
             ->hasMigration('create_laravel-google-cloud-translation_table')
-            ->hasCommand(LaravelGoogleCloudTranslationCommand::class);
+            ->hasCommand(GoogleCloudTranslationCommand::class);
     }
 }

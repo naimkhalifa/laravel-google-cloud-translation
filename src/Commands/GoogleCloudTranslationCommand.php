@@ -1,10 +1,10 @@
 <?php
 
-namespace NaimKhalifa\LaravelGoogleCloudTranslation\Commands;
+namespace NaimKhalifa\GoogleCloudTranslation\Commands;
 
 use Illuminate\Console\Command;
 
-class LaravelGoogleCloudTranslationCommand extends Command
+class GoogleCloudTranslationCommand extends Command
 {
     public $signature = 'laravel-google-cloud-translation';
 

@@ -44,8 +44,8 @@ php artisan vendor:publish --tag="laravel-google-cloud-translation-views"
 ## Usage
 
 ```php
-$laravelGoogleCloudTranslation = new NaimKhalifa\LaravelGoogleCloudTranslation();
-echo $laravelGoogleCloudTranslation->echoPhrase('Hello, NaimKhalifa!');
+$googleCloudTranslation = new NaimKhalifa\GoogleCloudTranslation();
+echo $googleCloudTranslation->echoPhrase('Hello, NaimKhalifa!');
 ```
 
 ## Testing

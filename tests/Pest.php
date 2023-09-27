@@ -1,5 +1,5 @@
 <?php
 
-use NaimKhalifa\LaravelGoogleCloudTranslation\Tests\TestCase;
+use NaimKhalifa\GoogleCloudTranslation\Tests\TestCase;
 
 uses(TestCase::class)->in(__DIR__);
