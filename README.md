@@ -15,13 +15,6 @@ You can install the package via composer:
 composer require naimkhalifa/laravel-google-cloud-translation
 ```
 
-You can publish and run the migrations with:
-
-```bash
-php artisan vendor:publish --tag="laravel-google-cloud-translation-migrations"
-php artisan migrate
-```
-
 You can publish the config file with:
 
 ```bash
@@ -31,22 +24,97 @@ php artisan vendor:publish --tag="laravel-google-cloud-translation-config"
 This is the contents of the published config file:
 
 ```php
+
 return [
+
+    /*
+    |--------------------------------------------------------------------------
+    | Google Cloud Translation API Key
+    |--------------------------------------------------------------------------
+    |
+    | Your Google Cloud Translation API Key.
+    | You can get it from https://console.cloud.google.com/apis/credentials
+    | More info at https://cloud.google.com/translate/docs/setup
+    |
+    */
+    'api_key' => env('GOOGLE_CLOUD_TRANSLATION_API_KEY'),
+
+    /*
+    |--------------------------------------------------------------------------
+    | Default Source Language
+    |--------------------------------------------------------------------------
+    |
+    | The default source language to translate from.
+    | You can find the list of supported languages here:
+    | https://cloud.google.com/translate/docs/languages
+    |
+    */
+    'default_source_language' => 'en',
+
+    /*
+    |--------------------------------------------------------------------------
+    | Default Target Language
+    |--------------------------------------------------------------------------
+    |
+    | The default target language to translate to.
+    | Obviously, it must be different from the default source language.
+    |
+    */
+    'default_target_language' => 'es',
+
+    /*
+    |--------------------------------------------------------------------------
+    | Default Format
+    |--------------------------------------------------------------------------
+    |
+    | The default format to translate to.
+    | Acceptable values are html or text.
+    |
+    */
+    'default_format' => 'text',
 ];
-```
-
-Optionally, you can publish the views using
-
-```bash
-php artisan vendor:publish --tag="laravel-google-cloud-translation-views"
 ```
 
 ## Usage
 
+
+#### GoogleCloudTranslation::translate(string \$text, array $options)
+
+Use this method if you want to translate a single text string.
+
 ```php
-$googleCloudTranslation = new NaimKhalifa\GoogleCloudTranslation();
-echo $googleCloudTranslation->echoPhrase('Hello, NaimKhalifa!');
+# This would translate using default_source_language 
+# and default_target_language config values
+GoogleCloudTranslation::translate('Hello World');
+
+# with options
+GoogleCloudTranslation::translate('Hello World', [
+  'source' => 'en',
+  'target' => 'fr',
+  'format' => 'text', # or 'html'
+]);
 ```
+
+#### GoogleCloudTranslation::translateBatch(array \$input, array $options)
+
+Use this method if you want to translate multiple strings at once.
+
+```php
+
+GoogleCloudTranslation::translateBatch([
+  'Something else',
+  'Another string to translate',
+  'And a third one because we can'
+])
+
+# You can also pass options to this method
+GoogleCloudTranslation::translateBatch('Hello World', [
+  'source' => 'en',
+  'target' => 'fr',
+  'format' => 'text', # or 'html'
+]);
+```
+
 
 ## Testing
 
