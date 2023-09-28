@@ -4,6 +4,9 @@ namespace NaimKhalifa\GoogleCloudTranslation\Traits;
 
 trait SupportedLanguages
 {
+    /**
+     * @return array<string>
+     */
     public function supportedLanguages(): array
     {
         return [

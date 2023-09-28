@@ -40,6 +40,9 @@ class GoogleCloudTranslation
         }
     }
 
+    /**
+     * @param  array<string,string>  $options
+     */
     public function translate(string $text, array $options = []): string|GoogleCloudTranslationException
     {
         $this->validateConfig();
@@ -59,6 +62,11 @@ class GoogleCloudTranslation
         return $translation['text'];
     }
 
+    /**
+     * @param  array<string,string>  $options
+     * @param  array<string,string>  $input
+     * @return array<string,string>|GoogleCloudTranslationException
+     */
     public function translateBatch(array $input = [], array $options = []): array|GoogleCloudTranslationException
     {
         $this->validateConfig();
@@ -72,6 +80,10 @@ class GoogleCloudTranslation
         return $this->translateClient->translateBatch($input, $hydratedOptions);
     }
 
+    /**
+     * @param  array<string,string>  $options
+     * @return array<string,string>
+     */
     protected function hydrateTranslateOptions(array $options): array
     {
         $targetLanguage = $options['target'] ?? config('google-cloud-translation.default_target_language');
@@ -79,9 +91,9 @@ class GoogleCloudTranslation
         $format = $options['format'] ?? config('google-cloud-translation.default_format');
 
         return [
-            'target' => $targetLanguage,
-            'source' => $sourceLanguage,
-            'format' => $format,
+            'target' => is_string($targetLanguage) ? $targetLanguage : '',
+            'source' => is_string($sourceLanguage) ? $sourceLanguage : '',
+            'format' => is_string($format) ? $format : '',
         ];
     }
 }
