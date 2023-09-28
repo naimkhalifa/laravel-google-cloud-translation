@@ -2,7 +2,7 @@
 
 namespace NaimKhalifa\GoogleCloudTranslation;
 
-use NaimKhalifa\GoogleCloudTranslation\Commands\GoogleCloudTranslationCommand;
+use NaimKhalifa\GoogleCloudTranslation\Commands\TranslateLangFile;
 use Spatie\LaravelPackageTools\Package;
 use Spatie\LaravelPackageTools\PackageServiceProvider;
 
@@ -20,6 +20,6 @@ class GoogleCloudTranslationServiceProvider extends PackageServiceProvider
             ->hasConfigFile(
                 'google-cloud-translation',
             )
-            ->hasCommand(GoogleCloudTranslationCommand::class);
+            ->hasCommand(TranslateLangFile::class);
     }
 }

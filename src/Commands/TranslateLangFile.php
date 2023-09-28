@@ -6,9 +6,9 @@ use Illuminate\Console\Command;
 use Illuminate\Support\Arr;
 use NaimKhalifa\GoogleCloudTranslation\Facades\GoogleCloudTranslation;
 
-class GoogleCloudTranslationCommand extends Command
+class TranslateLangFile extends Command
 {
-    public $signature = 'google-cloud-translation:translate-strings {--source=} {--target=} {--file=} {--dryrun=true}';
+    public $signature = 'google-cloud-translation:translate-lang-file {--source=} {--target=} {--file=} {--dryrun=true}';
 
     public $description = 'Translates all strings in a lang file.';
 
@@ -48,8 +48,11 @@ class GoogleCloudTranslationCommand extends Command
 
         if ($this->dryrun) {
             $this->outputTranslations();
+
+            $untempedFilePath = str_replace('.tmp', '', $this->newFilePath);
+
             $confirmed = $this->confirm(
-                'Dryrun mode enabled. Do you want to write the translations to '.str_replace('.tmp', '', $this->newFilePath).'?'
+                'Dryrun mode enabled. Do you want to write the translations to '.$untempedFilePath.'?'
             );
 
             if (! $confirmed) {
@@ -61,9 +64,9 @@ class GoogleCloudTranslationCommand extends Command
                 return self::SUCCESS;
             }
 
-            $this->info('Writing translations to '.$this->newFilePath.'...');
+            $this->info('Writing translations to '.$untempedFilePath.'...');
 
-            rename($this->newFilePath, str_replace('.tmp', '', $this->newFilePath));
+            rename($this->newFilePath, $untempedFilePath);
         }
 
         $this->info('Done!');
