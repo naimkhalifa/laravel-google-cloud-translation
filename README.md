@@ -115,6 +115,40 @@ GoogleCloudTranslation::translateBatch('Hello World', [
 ]);
 ```
 
+## Commands
+
+### Translate language files
+
+This Artisan command allows you to translate strings in a language file using Google Cloud Translation.
+The format of the file you want to translate should conform to what you would typically find under Laravel `/lang` folder.
+
+```
+php artisan google-cloud-translation:translate-lang-file [options]
+```
+
+#### Options
+
+`--source`: Specify the source language for translation. (**Required**)
+`--target`: Specify the target language for translation. (**Required**)
+`--file`: Specify the path to the language file you want to translate. (**Required**)
+`--dryrun`: Enable dry run mode, which will display translations without saving them to a file. (Optional, enabled by default)
+
+#### Example
+
+```
+php artisan google-cloud-translation:translate-lang-file --source=en --target=fr --file=resources/lang/en/messages.php
+```
+
+This is when you're running the command with --dryrun option enabled (by default).
+This command will translate all the strings in the messages.php language file from English (en) to French (fr) and display the translations on the terminal. 
+You then have to confirm with prompt for the translations to be saved to destination file (in this example, that would be `resources/lang/fr/messages.php`).
+
+Be careful that this will override any existing file that lives at that path! Basically replacing it.
+
+If you want to bypass confirmation and directly write to destination, you can disable --dryrun mode
+```
+php artisan google-cloud-translation:translate-lang-file --source=en --target=fr --file=resources/lang/en/messages.php --dryrun=false
+```
 
 ## Testing
 
