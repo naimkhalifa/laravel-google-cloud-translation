@@ -65,9 +65,9 @@ class GoogleCloudTranslation
     /**
      * @param  array<string,string>  $options
      * @param  array<string,string>  $input
-     * @return array<string,string>|GoogleCloudTranslationException
+     * @return array<array<string,string>>
      */
-    public function translateBatch(array $input = [], array $options = []): array|GoogleCloudTranslationException
+    public function translateBatch(array $input = [], array $options = []): array
     {
         $this->validateConfig();
 
